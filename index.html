@@ -417,12 +417,7 @@ body::after{
     radial-gradient(ellipse 80% 45% at 50% 0%,rgba(245,217,164,.07) 0%,transparent 50%);
 }
 /* One-pass gold shimmer — plays once on load, then every 6s */
-.vip-ticket::after{
-  content:'';position:absolute;inset:0;border-radius:14px;z-index:2;pointer-events:none;
-  background:linear-gradient(105deg,transparent 25%,rgba(245,217,164,.1) 45%,rgba(255,235,180,.18) 50%,rgba(245,217,164,.1) 55%,transparent 75%);
-  transform:translateX(-120%);
-  animation:ticket-shine 6s ease-in-out 1.5s infinite;
-}
+
 @keyframes ticket-shine{
   0%{transform:translateX(-120%)}
   40%,100%{transform:translateX(220%)}
@@ -619,8 +614,8 @@ footer{padding:1.8rem 1.5rem 2.2rem;background:var(--black);border-top:1px solid
     <li><a href="#hero">Home</a></li>
     <li><a href="#legacy">Legacy</a></li>
     <li><a href="#memories">Memories</a></li>
-    <li><a href="#vip-pass">VIP Pass</a></li>
-    <li><a href="#rsvp-section" class="nav-rsvp">RSVP</a></li>
+    <li><a href="#vip-pass" class="nav-rsvp">Join Us</a></li>
+    
   </ul>
   <div class="nav-ham" id="navHam" onclick="document.getElementById('navLinks').classList.toggle('open')">
     <span></span><span></span><span></span>
@@ -661,7 +656,7 @@ footer{padding:1.8rem 1.5rem 2.2rem;background:var(--black);border-top:1px solid
     <a href="#legacy" class="btn-gold">Explore the Legacy</a>
     <a href="#rsvp-section" class="btn-ghost">Reserve Your Spotlight</a>
   </div>
-  <div class="scroll-hint"><div class="scroll-hint-line"></div><span>Scroll</span></div>
+  
   <div class="hero-carpet"></div>
 </section>
 
@@ -712,7 +707,7 @@ footer{padding:1.8rem 1.5rem 2.2rem;background:var(--black);border-top:1px solid
 
   <div class="vip-section-label reveal">
     <div class="sec-eye">Exclusive Invitation</div>
-    <div class="vip-section-headline">Your VIP Pass Awaits</div>
+    <div class="vip-section-headline">A Special Invitation Reserved for You</div>
   </div>
 
   <div class="vip-pass-wrap reveal">
@@ -731,18 +726,10 @@ footer{padding:1.8rem 1.5rem 2.2rem;background:var(--black);border-top:1px solid
           <div class="vt-subtitle">The Grand Farewell</div>
         </div>
 
-        <div class="vt-access-band">
-          <div class="vt-access-text">VIP ACCESS</div>
-          <div class="vt-access-sub">All Access · Exclusive Entry</div>
-        </div>
+        
       </div>
 
-      <!-- PERFORATED DIVIDER -->
-      <div class="vt-perf">
-        <div class="vt-notch vt-notch-l"></div>
-        <div class="vt-perf-label">✦ · Authorized Entry · ✦</div>
-        <div class="vt-notch vt-notch-r"></div>
-      </div>
+      
 
       <!-- BOTTOM -->
       <div class="vt-bottom">
