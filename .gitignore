@@ -1,7 +1,7 @@
 .vercel
 
 # Media files (large videos)
-*.mp4
+
 
 # PDF files (college attendance/schedules)
 *.pdf
