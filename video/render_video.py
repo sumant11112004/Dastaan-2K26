@@ -86,6 +86,38 @@ def format_student_name(raw_name):
         return f"({roll} {name})"
     return raw_name
 
+def download_fixed_video():
+    video_path = "fixed.mp4"
+    if os.path.exists(video_path):
+        return True
+        
+    print("fixed.mp4 not found locally. Fetching from Google Drive...")
+    file_id = "17QmycoH0pLMNLudzb1FnANQTU7zubFFu"
+    url = f"https://drive.google.com/uc?export=download&id={file_id}"
+    req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
+    
+    try:
+        with urllib.request.urlopen(req) as response:
+            html = response.read().decode('utf-8')
+            
+        confirm_match = re.search(r'name="confirm"\s+value="([^"]+)"', html)
+        uuid_match = re.search(r'name="uuid"\s+value="([^"]+)"', html)
+        
+        confirm = confirm_match.group(1) if confirm_match else 't'
+        uuid = uuid_match.group(1) if uuid_match else ''
+        
+        dl_url = f"https://drive.usercontent.google.com/download?id={file_id}&export=download&confirm={confirm}"
+        if uuid:
+            dl_url += f"&uuid={uuid}"
+            
+        print("Downloading video (approx. 188MB)...")
+        urllib.request.urlretrieve(dl_url, video_path)
+        print("Successfully downloaded fixed.mp4 from Google Drive.")
+        return True
+    except Exception as e:
+        print(f"Error downloading fixed.mp4 from Google Drive: {e}")
+        return False
+
 def main():
     print("Initializing video renderer...")
     
@@ -93,6 +125,7 @@ def main():
     download_fonts()
     
     # 2. Check files
+    download_fixed_video()
     video_path = "fixed.mp4"
     names_path = "names.json"
     audio_path = "../music.mpeg"
