@@ -1,1 +1,17 @@
 .vercel
+
+# Media files (large videos)
+*.mp4
+
+# PDF files (college attendance/schedules)
+*.pdf
+
+# Python compiled files and caches
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Operating system files
+.DS_Store
+Thumbs.db

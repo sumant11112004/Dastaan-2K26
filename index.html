@@ -86,7 +86,7 @@ body::after{
 
 /* ══ HERO ══ */
 #hero{
-  min-height:100vh;position:relative;overflow:hidden;
+  min-height:auto;position:relative;overflow:hidden;
   display:flex;flex-direction:column;align-items:center;justify-content:center;
   text-align:center;padding:8rem 1.5rem 5rem;
   background:
@@ -134,7 +134,7 @@ body::after{
 .ff-tick-item .ff-dot{width:3px;height:3px;border-radius:50%;background:var(--gold);opacity:.5;animation:dot-pulse 2s ease-in-out infinite alternate}
 @keyframes dot-pulse{from{opacity:.2;transform:scale(.8)}to{opacity:.8;transform:scale(1.2)}}
 .hero-cta{margin-top:2.2rem;display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;animation:fadeIn 1s 4.5s both}
-.btn-gold{font-family:'Cinzel',serif;font-size:.62rem;letter-spacing:.32em;text-transform:uppercase;padding:.9rem 2.4rem;background:linear-gradient(135deg,var(--gold-d) 0%,var(--gold-l) 50%,var(--gold-d) 100%);background-size:200% 100%;color:#050505;border:none;cursor:pointer;border-radius:2px;transition:background-position .4s,transform .2s,box-shadow .3s;text-decoration:none;display:inline-block;box-shadow:0 4px 20px rgba(198,161,91,.3);position:relative;overflow:hidden}
+.btn-gold{font-family:'Cinzel',serif;font-size:.62rem;letter-spacing:.32em;text-transform:uppercase;padding:0.9rem 2.4rem;background:linear-gradient(135deg,var(--gold-d) 0%,var(--gold-l) 50%,var(--gold-d) 100%);background-size:200% 100%;color:#050505;border:none;cursor:pointer;border-radius:2px;transition:background-position .4s,transform .2s,box-shadow .3s;text-decoration:none;display:inline-block;box-shadow:0 4px 20px rgba(198,161,91,.3);position:relative;overflow:hidden}
 .btn-gold::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.2),transparent);transform:translateX(-100%);transition:transform .5s}
 .btn-gold:hover{background-position:100% 0;transform:translateY(-2px);box-shadow:0 8px 30px rgba(198,161,91,.45)}
 .btn-gold:hover::after{transform:translateX(100%)}
@@ -144,10 +144,54 @@ body::after{
 .scroll-hint-line{width:1px;height:35px;background:linear-gradient(180deg,var(--gold),transparent);animation:scroll-pulse 2s infinite}
 @keyframes scroll-pulse{0%,100%{opacity:.3}50%{opacity:1}}
 .scroll-hint span{font-family:'Cinzel',serif;font-size:.42rem;letter-spacing:.38em;color:var(--gold);opacity:.38;text-transform:uppercase}
-@media(max-width:600px){
-  .hero-colleges{flex-direction:column;gap:.8rem}
-  .clg-amp{display:none}
-  .clg-chip-name{max-width:155px;font-size:.7rem}
+@media (max-width: 600px) {
+
+  .hero-colleges{
+    flex-direction: row;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  #hero{
+    justify-content: flex-start;
+    
+  }
+
+  
+  .hero-colleges{
+    margin-top: 0;
+    margin-bottom: 1rem;
+  }
+
+  .clg-amp{
+    display: block;
+    font-size: 1.2rem;
+  }
+
+  .clg-chip{
+    padding: .6rem .9rem;
+    gap: .5rem;
+  }
+
+  .clg-chip-name{
+    display: none;
+  }
+
+  .clg-chip-abbr{
+    font-size: .75rem;
+    letter-spacing: .2em;
+    margin-top: 0;
+  }
+
+  .birt-logo{
+    width: 42px;
+    height: 34px;
+  }
+
+  .birts-logo{
+    width: 42px;
+    height: 42px;
+  }
 }
 
 /* SEC SEPARATOR */
@@ -360,7 +404,7 @@ body::after{
 .mem-lines li{font-family:'Cormorant Garamond',serif;font-size:clamp(1rem,2.4vw,1.4rem);color:var(--ivory-dim);line-height:2.5;font-style:italic}
 .mem-lines li em{color:var(--gold-l);font-weight:600}
 .mem-lines li:last-child{background:linear-gradient(135deg,var(--gold-d),var(--gold-l),var(--gold-ll),var(--gold-l));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.mem-tagline{font-family:'Great Vibes',cursive;font-size:clamp(1.8rem,6vw,3.8rem);background:linear-gradient(135deg,var(--gold-d),var(--gold-l),var(--gold-ll),var(--gold-l));background-size:200% 100%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:pre-shimmer 4s ease infinite;filter:drop-shadow(0 2px 18px rgba(198,130,20,.3))}
+.mem-tagline{font-family:'Great Vibes',cursive;font-size:clamp(1.8rem,6vw,3.8rem);margin-bottom: 1.5rem;background:linear-gradient(135deg,var(--gold-d),var(--gold-l),var(--gold-ll),var(--gold-l));background-size:200% 100%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:pre-shimmer 4s ease infinite;filter:drop-shadow(0 2px 18px rgba(198,130,20,.3))}
 
 /* ══════════════════════════════════
    VIP PASS — Static, Clean, Ticket-Style
@@ -431,23 +475,23 @@ body::after{
   display:inline-flex;align-items:center;gap:.4rem;
   background:rgba(198,161,91,.1);border:1px solid rgba(198,161,91,.28);
   border-radius:100px;padding:.28rem .8rem;
-  font-family:'Cinzel',serif;font-size:.4rem;letter-spacing:.38em;
+  font-family:'Cinzel',serif;font-size:.52rem;letter-spacing:.38em;
   color:rgba(198,161,91,.75);text-transform:uppercase;
 }
 .vt-badge-dot{width:4px;height:4px;border-radius:50%;background:var(--gold-l);display:inline-block}
-.vt-serial-top{font-family:'Cinzel',serif;font-size:.38rem;letter-spacing:.2em;color:rgba(198,161,91,.35);text-transform:uppercase}
+.vt-serial-top{font-family:'Cinzel',serif;font-size:.5rem;letter-spacing:.2em;color:rgba(198,161,91,.35);text-transform:uppercase}
 
 /* Event name */
 .vt-event-block{text-align:center;margin-bottom:1rem}
-.vt-cse-label{font-family:'Cinzel',serif;font-size:.42rem;letter-spacing:.5em;color:rgba(198,161,91,.5);text-transform:uppercase;margin-bottom:.3rem}
+.vt-cse-label{font-family:'Cinzel',serif;font-size:.55rem;letter-spacing:.5em;color:rgba(198,161,91,.5);text-transform:uppercase;margin-bottom:.3rem}
 .vt-title{
-  font-family:'Cinzel Decorative',serif;font-size:clamp(1.6rem,6vw,2.8rem);
+  font-family:'Cinzel Decorative',serif;font-size:clamp(2rem,7vw,2.8rem);
   background:linear-gradient(160deg,#9d7b43 0%,#c6a15b 25%,#e7c98a 45%,#f3d9a4 55%,#e7c98a 70%,#c6a15b 85%,#9d7b43 100%);
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
   letter-spacing:.1em;line-height:1;
   filter:drop-shadow(0 0 20px rgba(198,161,91,.3));
 }
-.vt-subtitle{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(.65rem,1.8vw,.82rem);color:rgba(198,161,91,.5);margin-top:.3rem;letter-spacing:.15em}
+.vt-subtitle{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(.85rem,2.2vw,1rem);color:rgba(198,161,91,.5);margin-top:.3rem;letter-spacing:.15em}
 
 /* VIP ACCESS band */
 .vt-access-band{
@@ -460,14 +504,14 @@ body::after{
 }
 .vt-access-text{
   font-family:'Cinzel',serif;font-weight:900;
-  font-size:clamp(1.5rem,7vw,3rem);
+  font-size:clamp(2rem,8vw,3.8rem);
   letter-spacing:.4em;
   background:linear-gradient(180deg,#f3d9a4 0%,#e7c98a 35%,#c6a15b 65%,#9c7433 100%);
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
   filter:drop-shadow(0 0 16px rgba(231,201,138,.4)) drop-shadow(0 2px 2px rgba(0,0,0,.7));
   line-height:1;
 }
-.vt-access-sub{font-family:'Cinzel',serif;font-size:.38rem;letter-spacing:.55em;color:rgba(198,161,91,.45);margin-top:.35rem;text-transform:uppercase}
+.vt-access-sub{font-family:'Cinzel',serif;font-size:.5rem;letter-spacing:.55em;color:rgba(198,161,91,.45);margin-top:.35rem;text-transform:uppercase}
 
 /* PERFORATED DIVIDER */
 .vt-perf{
@@ -478,39 +522,39 @@ body::after{
 .vt-notch{position:absolute;width:24px;height:24px;border-radius:50%;background:#050505;border:1px solid rgba(198,161,91,.3);top:50%;transform:translateY(-50%);z-index:9}
 .vt-notch-l{left:-12px}
 .vt-notch-r{right:-12px}
-.vt-perf-label{font-family:'Cinzel',serif;font-size:.36rem;letter-spacing:.55em;color:rgba(198,161,91,.32);text-transform:uppercase;width:100%;text-align:center}
+.vt-perf-label{font-family:'Cinzel',serif;font-size:.46rem;letter-spacing:.55em;color:rgba(198,161,91,.32);text-transform:uppercase;width:100%;text-align:center}
 
 /* BOTTOM section */
 .vt-bottom{position:relative;z-index:3;padding:1.2rem 1.8rem 1.4rem}
 
 .vt-grid{display:grid;grid-template-columns:1fr 1fr;gap:.65rem 1.2rem;margin-bottom:1.1rem}
 .vt-item{border-bottom:1px solid rgba(198,161,91,.08);padding-bottom:.5rem}
-.vt-label{font-family:'Cinzel',serif;font-size:.34rem;letter-spacing:.38em;color:rgba(198,161,91,.38);text-transform:uppercase;margin-bottom:.18rem}
-.vt-val{font-family:'Cormorant Garamond',serif;font-size:clamp(.75rem,2vw,.9rem);color:var(--gold-l);font-weight:600;letter-spacing:.03em}
+.vt-label{font-family:'Cinzel',serif;font-size:.46rem;letter-spacing:.38em;color:rgba(198,161,91,.38);text-transform:uppercase;margin-bottom:.18rem}
+.vt-val{font-family:'Cormorant Garamond',serif;font-size:clamp(.95rem,2.5vw,1.15rem);color:var(--gold-l);font-weight:600;letter-spacing:.03em}
 
 /* Entry note */
 .vt-entry{
   background:rgba(198,161,91,.05);border:1px solid rgba(198,161,91,.12);
   border-radius:7px;padding:.65rem .9rem;margin-bottom:1rem;
-  font-family:'Cinzel',serif;font-size:.38rem;letter-spacing:.22em;
+  font-family:'Cinzel',serif;font-size:.5rem;letter-spacing:.22em;
   color:rgba(198,161,91,.55);text-transform:uppercase;text-align:center;line-height:1.9;
 }
-.vt-entry strong{display:block;font-family:'Cormorant Garamond',serif;font-size:.9rem;color:var(--gold-l);font-style:italic;letter-spacing:.06em;text-transform:none;font-weight:600;margin-top:.15rem}
+.vt-entry strong{display:block;font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:var(--gold-l);font-style:italic;letter-spacing:.06em;text-transform:none;font-weight:600;margin-top:.15rem}
 
 /* Barcode row */
 .vt-bottom-row{display:flex;align-items:center;justify-content:space-between;gap:.8rem}
 .vt-barcode-wrap{flex:1}
 .vt-barcode{display:flex;align-items:flex-end;gap:1px;height:38px}
 .vt-bar{background:var(--gold-d);flex-shrink:0;border-radius:.5px}
-.vt-serial-bc{font-family:'Cinzel',serif;font-size:.3rem;letter-spacing:.18em;color:rgba(198,161,91,.32);margin-top:.35rem}
+.vt-serial-bc{font-family:'Cinzel',serif;font-size:.42rem;letter-spacing:.18em;color:rgba(198,161,91,.32);margin-top:.35rem}
 .vt-auth{
   display:flex;flex-direction:column;align-items:center;justify-content:center;
   border:1px solid rgba(198,161,91,.28);border-radius:50%;width:58px;height:58px;flex-shrink:0;
   position:relative;
 }
 .vt-auth::before{content:'';position:absolute;inset:3px;border-radius:50%;border:1px dashed rgba(198,161,91,.2)}
-.vt-auth-star{font-size:.85rem;color:var(--gold-l);margin-bottom:.15rem}
-.vt-auth-txt{font-family:'Cinzel',serif;font-size:.3rem;letter-spacing:.08em;color:rgba(198,161,91,.6);text-align:center;text-transform:uppercase;line-height:1.5}
+.vt-auth-star{font-size:1.1rem;color:var(--gold-l);margin-bottom:.15rem}
+.vt-auth-txt{font-family:'Cinzel',serif;font-size:.38rem;letter-spacing:.08em;color:rgba(198,161,91,.6);text-align:center;text-transform:uppercase;line-height:1.5}
 
 /* Card footer */
 .vt-footer{
@@ -518,18 +562,91 @@ body::after{
   text-align:center;padding:.65rem 1rem;
   background:linear-gradient(180deg,rgba(198,161,91,.03),rgba(198,161,91,.06));
   border-top:1px solid rgba(198,161,91,.12);
-  font-family:'Cinzel',serif;font-size:.38rem;letter-spacing:.48em;
+  font-family:'Cinzel',serif;font-size:.5rem;letter-spacing:.48em;
   color:rgba(198,161,91,.48);text-transform:uppercase;
 }
 .vt-footer span{color:var(--gold-l)}
 
 /* Mobile adjustments */
 @media(max-width:500px){
-  .vt-top,.vt-bottom{padding:1.2rem 1.2rem}
-  .vt-grid{grid-template-columns:1fr}
-  .vt-bottom-row{flex-wrap:wrap;justify-content:center;gap:.6rem}
-  .vt-barcode-wrap{flex:0 0 100%;text-align:center}
-  .vt-barcode{justify-content:center}
+
+  .vt-top,
+  .vt-bottom{
+    padding:1.4rem;
+    text-align:center;
+  }
+
+  .vt-header{
+    flex-direction:column;
+    gap:.7rem;
+    align-items:center;
+  }
+
+  .vt-event-block{
+    text-align:center;
+  }
+
+  .vt-grid{
+    grid-template-columns:1fr;
+    gap:1rem;
+    text-align:center;
+  }
+
+  .vt-item{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+  }
+
+  .vt-label{
+    font-size:.55rem;
+  }
+
+  .vt-val{
+    font-size:1.1rem;
+  }
+
+  .vt-entry{
+    text-align:center;
+    font-size:.55rem;
+  }
+
+  .vt-entry strong{
+    font-size:1.2rem;
+  }
+
+  .vt-bottom-row{
+    flex-direction:column;
+    align-items:center;
+    gap:1rem;
+  }
+
+  .vt-barcode-wrap{
+    width:100%;
+    text-align:center;
+  }
+
+  .vt-barcode{
+    justify-content:center;
+  }
+
+  .vt-auth{
+    margin:0 auto;
+  }
+
+  .vt-footer{
+    text-align:center;
+    font-size:.55rem;
+  }
+
+  .vt-title{
+    font-size:2.4rem;
+  }
+
+  .vt-access-text{
+    font-size:2.4rem;
+    letter-spacing:.25em;
+  }
 }
 
 /* ══ RSVP ══ */
@@ -615,7 +732,6 @@ footer{padding:1.8rem 1.5rem 2.2rem;background:var(--black);border-top:1px solid
     <li><a href="#legacy">Legacy</a></li>
     <li><a href="#memories">Memories</a></li>
     <li><a href="#vip-pass" class="nav-rsvp">Join Us</a></li>
-    
   </ul>
   <div class="nav-ham" id="navHam" onclick="document.getElementById('navLinks').classList.toggle('open')">
     <span></span><span></span><span></span>
@@ -653,7 +769,7 @@ footer{padding:1.8rem 1.5rem 2.2rem;background:var(--black);border-top:1px solid
   <div class="hero-batch">Batch of 2022 – 2026</div>
   <div class="ff-ticker-wrap"><div class="ff-ticker" id="ffTicker"></div></div>
   <div class="hero-cta">
-    <a href="#legacy" class="btn-gold">Explore the Legacy</a>
+    <a href="#legacy" class="btn-ghost">Explore the Legacy</a>
     <a href="#rsvp-section" class="btn-ghost">Reserve Your Spotlight</a>
   </div>
   
@@ -696,6 +812,8 @@ footer{padding:1.8rem 1.5rem 2.2rem;background:var(--black);border-top:1px solid
       </ul>
     </div>
     <div class="mem-tagline reveal">Every ending… just a smaller beginning.</div>
+    <a href="video/reel.html" class="btn-gold " style="box-shadow: 0 4px 22px rgba(198,161,91,0.5); font-weight: 700;">✦ Relive The Journey✦</a>
+    
   </div>
 </section>
 
@@ -707,7 +825,7 @@ footer{padding:1.8rem 1.5rem 2.2rem;background:var(--black);border-top:1px solid
 
   <div class="vip-section-label reveal">
     <div class="sec-eye">Exclusive Invitation</div>
-    <div class="vip-section-headline">A Special Invitation Reserved for You</div>
+    <div class="vip-section-headline">A Special Invitation for You</div>
   </div>
 
   <div class="vip-pass-wrap reveal">
@@ -816,7 +934,7 @@ footer{padding:1.8rem 1.5rem 2.2rem;background:var(--black);border-top:1px solid
 
 <script>
 /* PRELOADER */
-window.addEventListener('load',()=>{setTimeout(()=>document.getElementById('preloader').classList.add('hide'),3200)});
+window.addEventListener('load',()=>{setTimeout(()=>document.getElementById('preloader').classList.add('hide'),200)});
 
 /* NAVBAR */
 window.addEventListener('scroll',()=>{document.getElementById('navbar').classList.toggle('scrolled',scrollY>60)});

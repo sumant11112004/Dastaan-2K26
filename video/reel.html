@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Farewell Reel — Dastaan 2K26</title>
+  <!-- Import identical Google Fonts as index.html for visual consistency -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Cinzel:wght@400;600;700;900&family=Cinzel+Decorative:wght@400;700;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap"
+    rel="stylesheet" />
+
+  <style>
+    :root {
+      --black: #050505;
+      --deep: #020202;
+      --gold: #C6A15B;
+      --gold-l: #E7C98A;
+      --gold-ll: #F3D9A4;
+      --gold-d: #9C7433;
+      --ivory: #F5EEE4;
+      --ivory-dim: rgba(245, 238, 228, 0.72);
+      --font-cinzel: 'Cinzel', serif;
+      --font-cinzel-dec: 'Cinzel Decorative', serif;
+      --font-garamond: 'Cormorant Garamond', serif;
+      --font-sans: 'DM Sans', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--black);
+      color: var(--ivory);
+      font-family: var(--font-sans);
+      overflow: hidden;
+      width: 100vw;
+      height: 100vh;
+      user-select: none;
+    }
+
+    /* BACKGROUND VIDEO */
+    #videoContainer {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -2;
+      background: var(--black);
+      overflow: hidden;
+    }
+
+    #bgVideo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: filter 0.8s ease;
+      will-change: filter;
+    }
+
+    /* 1% Blur */
+    #bgVideo.blur-1 {
+      filter: blur(0.5px) brightness(0.60) contrast(1.0);
+    }
+
+    /* 2% Blur */
+    #bgVideo.blur-2 {
+      filter: blur(1px) brightness(0.55) contrast(1.0);
+    }
+
+    /* AMBIENT GLOW OVERLAY */
+    .ambient-glow {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 10% 10%, rgba(198, 161, 91, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 90% 90%, rgba(198, 161, 91, 0.08) 0%, transparent 40%),
+        linear-gradient(to bottom, rgba(5, 5, 5, 0.4) 0%, rgba(5, 5, 5, 0.1) 50%, rgba(5, 5, 5, 0.6) 100%);
+    }
+
+    /* REEL GRAIN EFFECT */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+      opacity: 0.5;
+    }
+
+    /* PARTICLES CANVAS */
+    #particles {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* AUDIO BUTTON (Top Right) */
+    #audioBtn {
+      position: fixed;
+      top: 3rem;
+      right: 3rem;
+      z-index: 6000;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      background: rgba(10, 10, 10, 0.7);
+      border: 1px solid rgba(198, 161, 91, 0.3);
+      color: var(--gold-l);
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    #audioBtn:hover {
+      background: rgba(198, 161, 91, 0.12);
+      border-color: var(--gold-l);
+    }
+
+    #audioBtn.playing {
+      animation: audio-pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes audio-pulse {
+
+      0%,
+      100% {
+        box-shadow: 0 0 0 0 rgba(198, 161, 91, 0.3);
+      }
+
+      50% {
+        box-shadow: 0 0 0 7px rgba(198, 161, 91, 0);
+      }
+    }
+
+    /* INTRO STAGE (SCROLLING CENTRED CAPTIONS) */
+    #introStage {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 10;
+      pointer-events: none;
+    }
+
+    .intro-scroll-wrap {
+      width: 90%;
+      max-width: 900px;
+      height: 100vh;
+      /* Takes full screen to remove top/bottom extra spacing */
+      overflow: hidden;
+      position: relative;
+      mask-image: linear-gradient(to bottom, transparent 0%, black 12%, black 88%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 12%, black 88%, transparent 100%);
+    }
+
+    .intro-scroll-list {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      position: absolute;
+      width: 100%;
+      top: 0;
+      will-change: transform;
+    }
+
+    .intro-item {
+      padding: 0.4rem 0;
+      /* Tight margins & padding to eliminate extra empty spaces */
+      width: 100%;
+    }
+
+    .intro-item.main-title {
+      font-family: var(--font-cinzel-dec);
+      font-size: clamp(3rem, 10vw, 6rem);
+      font-weight: 900;
+      letter-spacing: 0.15em;
+      color: var(--gold-l);
+      text-shadow: 0 0 25px rgba(198, 161, 91, 0.4);
+      margin-bottom: 0.5rem;
+    }
+
+    .intro-item.dept-title {
+      font-family: var(--font-cinzel);
+      font-size: clamp(1.4rem, 4vw, 2.3rem);
+      letter-spacing: 0.2em;
+      color: var(--ivory);
+      margin-bottom: 0.4rem;
+    }
+
+    .intro-item.batch-title {
+      font-family: var(--font-cinzel);
+      font-size: clamp(1rem, 3vw, 1.6rem);
+      letter-spacing: 0.15em;
+      color: var(--gold-l);
+      margin-bottom: 2rem;
+    }
+
+    .intro-item.sentence {
+      font-family: var(--font-garamond);
+      font-style: italic;
+      font-size: clamp(1.2rem, 3.5vw, 2rem);
+      line-height: 1.5;
+      color: var(--ivory);
+      text-shadow: 0 4px 15px rgba(0, 0, 0, 0.9);
+      margin-bottom: 1.5rem;
+    }
+
+    .intro-item.paragraph {
+      font-family: var(--font-garamond);
+      font-size: clamp(1.05rem, 2.8vw, 1.55rem);
+      line-height: 1.5;
+      color: var(--ivory-dim);
+      max-width: 800px;
+      margin: 0 auto 1.5rem auto;
+      text-shadow: 0 4px 15px rgba(0, 0, 0, 0.9);
+    }
+
+    .intro-credits-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      margin-top: 2rem;
+      margin-bottom: 1.5rem;
+      /* Little space after the last caption */
+    }
+
+    .intro-credit-block {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+
+    .intro-credit-block .role {
+      font-family: var(--font-cinzel);
+      font-size: clamp(0.8rem, 2vw, 1rem);
+      letter-spacing: 0.25em;
+      color: var(--gold-l);
+    }
+
+    .intro-credit-block .name {
+      font-family: var(--font-cinzel);
+      font-size: clamp(1.1rem, 3vw, 1.5rem);
+      letter-spacing: 0.15em;
+      color: var(--ivory);
+      font-weight: 600;
+    }
+
+    /* CREDITS STAGE */
+    #creditsStage {
+      position: fixed;
+      inset: 0;
+      z-index: 5;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 1s ease, visibility 1s ease;
+      padding-top: 5vh;
+    }
+
+    #creditsStage.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .credits-header {
+      text-align: center;
+      width: 100%;
+      position: absolute;
+      left: 0;
+      z-index: 20;
+      will-change: transform;
+      pointer-events: none;
+    }
+
+    .credits-title {
+      font-family: var(--font-cinzel-dec);
+      font-size: clamp(1.8rem, 5vw, 3.4rem);
+      background: linear-gradient(135deg, var(--gold-d), var(--gold-l), var(--gold-ll), var(--gold-l), var(--gold-d));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: 0.15em;
+      text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .credits-subtitle {
+      font-family: var(--font-cinzel);
+      font-size: clamp(0.9rem, 2vw, 1.3rem);
+      color: var(--ivory-dim);
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      margin-top: 0.6rem;
+    }
+
+    .credits-col-headers {
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      gap: 5rem;
+      width: 90%;
+      max-width: 1100px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 20;
+      will-change: transform;
+      pointer-events: none;
+    }
+
+    .col-title-flat {
+      flex: 1;
+      font-family: var(--font-cinzel);
+      font-size: clamp(1rem, 2.5vw, 1.45rem);
+      letter-spacing: 0.15em;
+      color: var(--gold-l);
+      text-align: center;
+      text-transform: uppercase;
+      font-weight: 600;
+      text-shadow: 0 2px 5px rgba(0, 0, 0, 0.9);
+    }
+
+    .credits-columns {
+      display: flex;
+      justify-content: center;
+      gap: 5rem;
+      width: 90%;
+      max-width: 1100px;
+      /* Scroll viewport starts 25px below locked headers at 75px */
+      height: calc(100vh - 75px);
+      margin-top: 75px;
+      position: relative;
+      mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
+    }
+
+    .credits-col {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+
+    .names-scroller-wrap {
+      width: 100%;
+      overflow: hidden;
+      flex: 1;
+      position: relative;
+    }
+
+    .names-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.1rem;
+      text-align: center;
+      position: absolute;
+      width: 100%;
+      top: 0;
+      will-change: transform;
+    }
+
+    .name-item {
+      font-family: var(--font-cinzel);
+      font-size: clamp(0.85rem, 1.8vw, 1.15rem);
+      color: var(--ivory-dim);
+      letter-spacing: 0.08em;
+      transition: color 0.3s ease;
+      text-shadow: 0 2px 5px rgba(0, 0, 0, 0.8);
+      line-height: 1.4;
+    }
+
+    .name-item:hover {
+      color: var(--gold-l);
+      text-shadow: 0 0 10px rgba(231, 201, 138, 0.6);
+    }
+
+    /* OUTRO STAGE */
+    #outroStage {
+      position: fixed;
+      inset: 0;
+      z-index: 25;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      pointer-events: none;
+      overflow: hidden;
+      opacity: 1;
+      visibility: visible;
+
+
+    }
+
+    .outro-scroll-wrap {
+      width: 90%;
+      max-width: 900px;
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
+      mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
+    }
+
+    .outro-scroll-list {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      position: absolute;
+      width: 100%;
+      top: 0;
+      will-change: transform;
+    }
+
+    .outro-item {
+      width: 100%;
+      padding: 0.3rem 0;
+    }
+
+    .outro-glorious {
+      font-family: var(--font-cinzel-dec);
+      font-size: clamp(1.8rem, 4.5vw, 3.2rem);
+      background: linear-gradient(135deg, var(--gold-l), var(--gold-ll), var(--gold-l));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: 0.15em;
+      margin-bottom: 1rem;
+      text-shadow: 0 0 25px rgba(198, 161, 91, 0.3);
+    }
+
+    .outro-title-thanks {
+      font-family: var(--font-cinzel);
+      font-size: clamp(1.2rem, 3vw, 1.8rem);
+      color: var(--gold-l);
+      letter-spacing: 0.2em;
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+      text-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+    }
+
+    .outro-body-thanks {
+      font-family: var(--font-garamond);
+      font-size: clamp(0.95rem, 2.2vw, 1.35rem);
+      color: var(--ivory-dim);
+      margin-bottom: 0.4rem;
+      letter-spacing: 0.05em;
+      line-height: 1.4;
+      text-shadow: 0 2px 5px rgba(0, 0, 0, 0.8);
+    }
+
+    .outro-title-memories {
+      font-family: var(--font-cinzel);
+      font-size: clamp(1.3rem, 3.5vw, 2.2rem);
+      color: var(--gold-ll);
+      letter-spacing: 0.15em;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      text-shadow: 0 4px 15px rgba(198, 161, 91, 0.4);
+    }
+
+    @keyframes gentle-pulse {
+      0% {
+        transform: scale(0.98);
+        filter: drop-shadow(0 0 15px rgba(198, 161, 91, 0.3));
+      }
+
+      100% {
+        transform: scale(1.02);
+        filter: drop-shadow(0 0 35px rgba(231, 201, 138, 0.5));
+      }
+    }
+
+    /* RESPONSIVE ADJUSTMENTS - FORCED TWO-COLUMN LAYOUT ON MOBILE & LAPTOP */
+    @media (max-width: 768px) {
+      #audioBtn {
+        top: 2rem;
+        right: 2rem;
+      }
+
+      .credits-columns {
+        gap: 1.5rem;
+        flex-direction: row;
+        /* FORCE TWO COLUMNS */
+        width: 95%;
+        height: calc(100vh - 110px);
+        margin-top: 110px;
+      }
+
+      .credits-col-headers {
+        gap: 1.5rem;
+        width: 95%;
+      }
+
+      .col-title-flat {
+        font-size: clamp(0.75rem, 2.8vw, 1rem);
+      }
+
+      .name-item {
+        font-size: clamp(0.6rem, 2.2vw, 0.85rem);
+        letter-spacing: 0.05em;
+      }
+
+      .names-list {
+        gap: 0.6rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Floating Particles Canvas -->
+  <canvas id="particles"></canvas>
+
+  <!-- Background Video Container (no loop attribute, playback loops/redirects handled by JS) -->
+  <div id="videoContainer">
+    <video id="bgVideo" autoplay muted playsinline>
+      <source src="fixed.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <div class="ambient-glow"></div>
+
+  <!-- Music Controls (Top Right) -->
+  <button id="audioBtn" title="Toggle Music">♪</button>
+
+  <!-- Audio Element -->
+  <audio id="bgmusic" loop preload="auto">
+    <source src="../music.mpeg" type="audio/mpeg">
+  </audio>
+
+  <!-- ════ STAGE 1: CINEMATIC CAPTIONS (SCROLLING) ════ -->
+  <main id="introStage">
+    <div class="intro-scroll-wrap" id="introScrollWrap">
+      <div class="intro-scroll-list" id="introScrollList">
+        <div class="intro-item main-title">DASTAAN 2K26</div>
+        <div class="intro-item batch-title" style="margin-bottom: 3.5rem;">THE FINAL GOOD BYE</div>
+        <div class="intro-item main-title" style="font-size: clamp(2rem, 7vw, 4rem); margin-bottom: 0.5rem;">THE END
+        </div>
+        <div class="intro-item dept-title">CSE DEPARTMENT</div>
+        <div class="intro-item batch-title">BATCH 2022-2026 BIRT & BIRTS</div>
+
+        <div class="intro-item sentence">Some journeys end, but the memories stay forever.</div>
+        <div class="intro-item sentence">One day, it just became the last day...</div>
+
+        <div class="intro-item paragraph">From the pressure of attendance and assignments to the laughter of canteen
+          talks, from stressful exams and last-minute studies to mass bunks, culturals, photoshoots, crushes, fights,
+          and lifelong memories—every chapter added meaning to our story.</div>
+
+        <div class="intro-item sentence">What once felt like forever is now a memory we'll keep replaying.</div>
+
+        <div class="intro-item paragraph">Late-night submissions, lab vivas, fest preparations, proxy attendance, group
+          studies, endless laughter... these years gave us more than a degree.</div>
+
+        <div class="intro-item paragraph">To the seniors who inspired, guided, and supported us thank you for leaving
+          behind memories that will echo through these corridors forever.</div>
+
+        <div class="intro-item sentence">The end of an era, but the beginning of everything else.</div>
+
+        <div class="intro-item sentence">Once a part of CSE, always a part of this family.</div>
+
+        <div class="intro-credits-grid">
+          <div class="intro-credit-block">
+            <div class="role">WRITTEN BY</div>
+            <div class="name">The Directors</div>
+          </div>
+          <div class="intro-credit-block">
+            <div class="role">PRODUCED BY</div>
+            <div class="name">CSE Department</div>
+          </div>
+          <div class="intro-credit-block">
+            <div class="role">DIRECTED BY</div>
+            <div class="name">Respected Faculties</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ════ STAGE 2: MOVIE CREDITS SCROLL ════ -->
+  <section id="creditsStage">
+    <div class="credits-header" id="creditsHeader" style="display: none;">
+      <h1 class="credits-title">DASTAAN 2K26</h1>
+      <h2 class="credits-subtitle">THE FINAL GOOD BYE</h2>
+    </div>
+
+    <div class="credits-col-headers" id="creditsColHeaders">
+      <div class="col-title-flat">BIRT</div>
+      <div class="col-title-flat">BIRTS</div>
+    </div>
+
+    <div class="credits-columns">
+      <!-- Left Column (BIRT College) -->
+      <div class="credits-col">
+        <div class="names-scroller-wrap">
+          <div class="names-list" id="birtList">
+            <!-- Populated from names.js -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column (BIRTS College) -->
+      <div class="credits-col">
+        <div class="names-scroller-wrap">
+          <div class="names-list" id="birtsList">
+            <!-- Populated from names.js -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ STAGE 3: OUTRO FAREWELL (SCROLLING) ════ -->
+  <section id="outroStage">
+    <div class="outro-scroll-wrap" id="outroScrollWrap">
+      <div class="outro-scroll-list" id="outroScrollList">
+        <div class="outro-item outro-glorious">We'll miss you all</div>
+        <div class="outro-item outro-title-thanks">SPECIAL THANKS</div>
+        <div class="outro-item outro-body-thanks">TO Our Faculties, Seniors & Families</div>
+        <div class="outro-item outro-body-thanks">Who Made These Years So Beautiful</div>
+        <div class="outro-item outro-title-memories">THANK YOU FOR THE MEMORIES</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Import the extracted names arrays -->
+  <script src="names.js"></script>
+
+  <script>
+    // Dom elements
+    const bgVideo = document.getElementById('bgVideo');
+    const aBtn = document.getElementById('audioBtn');
+
+    const introStage = document.getElementById('introStage');
+    const introScrollWrap = document.getElementById('introScrollWrap');
+    const introScrollList = document.getElementById('introScrollList');
+
+    const creditsStage = document.getElementById('creditsStage');
+    const creditsHeader = document.getElementById('creditsHeader');
+    const creditsColHeaders = document.getElementById('creditsColHeaders');
+    const birtList = document.getElementById('birtList');
+    const birtsList = document.getElementById('birtsList');
+
+    const outroStage = document.getElementById('outroStage');
+    const outroScrollWrap = document.getElementById('outroScrollWrap');
+    const outroScrollList = document.getElementById('outroScrollList');
+
+    // Check if student names loaded correctly
+    const birtNames = typeof BIRT_STUDENTS !== 'undefined' ? BIRT_STUDENTS : ["Student Names Not Loaded"];
+    const birtsNames = typeof BIRTS_STUDENTS !== 'undefined' ? BIRTS_STUDENTS : ["Student Names Not Loaded"];
+
+    // Format names on-the-fly to (Roll# Name), e.g. "(002 ABHINAV KAUSHAL)"
+    function formatStudentName(rawName) {
+      const match = rawName.match(/(.+)\s+\((\d+)\)/);
+      if (match) {
+        const name = match[1].trim();
+        const roll = match[2].trim();
+        return `(${roll} ${name})`;
+      }
+      return rawName;
+    }
+
+    // Populate lists
+    function populateNames() {
+      birtList.innerHTML = birtNames.map(name => `<div class="name-item">${formatStudentName(name)}</div>`).join('');
+      birtsList.innerHTML = birtsNames.map(name => `<div class="name-item">${formatStudentName(name)}</div>`).join('');
+    }
+
+    populateNames();
+
+    // Floating Gold Particles canvas script
+    (function () {
+      const c = document.getElementById('particles');
+      const ctx = c.getContext('2d');
+      let W, H, ps = [];
+      function sz() { W = c.width = window.innerWidth; H = c.height = window.innerHeight; }
+      sz();
+      window.addEventListener('resize', sz);
+      const cols = ['rgba(198,161,91,', 'rgba(231,201,138,', 'rgba(245,230,200,', 'rgba(157,123,67,'];
+      class P {
+        reset() {
+          this.x = Math.random() * W;
+          this.y = H + 10;
+          this.r = Math.random() * 1.4 + 0.3;
+          this.vx = (Math.random() - 0.5) * 0.22;
+          this.vy = -(Math.random() * 0.3 + 0.05);
+          this.a = Math.random() * 0.18 + 0.03;
+          this.col = cols[Math.floor(Math.random() * cols.length)];
+          this.wobble = Math.random() * Math.PI * 2;
+          this.ws = Math.random() * 0.014;
+        }
+        constructor() { this.reset(); }
+        update() {
+          this.wobble += this.ws;
+          this.x += this.vx + Math.sin(this.wobble) * 0.1;
+          this.y += this.vy;
+          this.a -= 0.00035;
+          if (this.a <= 0 || this.y < -10) this.reset();
+        }
+        draw() {
+          ctx.save();
+          ctx.globalAlpha = this.a;
+          ctx.fillStyle = this.col + '0.9)';
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.restore();
+        }
+      }
+      for (let i = 0; i < 65; i++) {
+        const p = new P();
+        p.y = Math.random() * H;
+        ps.push(p);
+      }
+      function loop() {
+        ctx.clearRect(0, 0, W, H);
+        ps.forEach(p => {
+          p.update();
+          p.draw();
+        });
+        requestAnimationFrame(loop);
+      }
+      loop();
+    })();
+
+    // Music Manager (circular play button top-right)
+    // Video Audio Manager
+    let soundEnabled = true;
+
+    bgVideo.muted = false;
+
+    aBtn.textContent = '♫';
+    aBtn.classList.add('playing');
+
+    aBtn.addEventListener('click', () => {
+
+      soundEnabled = !soundEnabled;
+
+      bgVideo.muted = !soundEnabled;
+
+      if (soundEnabled) {
+        aBtn.textContent = '♫';
+        aBtn.classList.add('playing');
+      } else {
+        aBtn.textContent = '♪';
+        aBtn.classList.remove('playing');
+      }
+    });
+
+    // Timeline Loop based on Video Playback Time
+    let isRedirectionTriggered = false;
+    let lastOutroY = window.innerHeight;
+
+    function updateTimeline() {
+      if (isRedirectionTriggered) return;
+
+      const t = bgVideo.currentTime;
+
+      bgVideo.className = t < 30 ? 'blur-1' : 'blur-2';
+
+      // =========================
+      // INTRO (0s - 30s)
+      // =========================
+      if (t < 30) {
+
+        if (t < 1) {
+          introStage.style.opacity = '0';
+          creditsStage.style.opacity = '0';
+          creditsStage.style.visibility = 'hidden';
+          outroStage.style.opacity = '0';
+          outroStage.style.visibility = 'hidden';
+        } else {
+          introStage.style.opacity = '1';
+          creditsStage.style.opacity = '1';
+          creditsStage.style.visibility = 'visible';
+          outroStage.style.opacity = '0';
+          outroStage.style.visibility = 'hidden';
+        }
+
+        introStage.style.display = 'flex';
+        creditsStage.style.display = 'flex';
+        creditsStage.classList.add('active');
+        outroStage.style.display = 'flex';
+
+        const V = introScrollWrap.clientHeight;
+        const H = introScrollList.scrollHeight;
+
+        const Y_start = V;
+        const Y_end = -H + 10;
+
+        let translateY;
+
+        if (t <= 1) {
+          translateY = Y_start;
+        } else {
+          const p = (t - 1) / 29;
+          translateY = Y_start + p * (Y_end - Y_start);
+        }
+
+        introScrollList.style.transform =
+          `translateY(${translateY}px)`;
+
+        const y_headers_scroll = translateY + H + 10;
+        const y_headers = Math.max(50, y_headers_scroll);
+
+        creditsColHeaders.style.transform =
+          `translateX(-50%) translateY(${y_headers}px)`;
+
+        const y_birt_scroll = y_headers_scroll - 20;
+
+        birtList.style.transform =
+          `translateY(${y_birt_scroll}px)`;
+
+        birtsList.style.transform =
+          `translateY(${y_birt_scroll}px)`;
+
+        outroScrollList.style.transform =
+          `translateY(${V + 300}px)`;
+      }
+
+      // =========================
+      // CREDITS + EARLY OUTRO (30s - 123s)
+      // =========================
+      else if (t >= 30 && t < 148) {
+
+        introStage.style.display = 'none';
+
+        creditsStage.style.display = 'flex';
+        creditsStage.style.opacity = '1';
+        creditsStage.style.visibility = 'visible';
+
+        outroStage.style.display = 'flex';
+        outroStage.style.opacity = '1';
+        outroStage.style.visibility = 'visible';
+
+        const V = outroScrollWrap.clientHeight;
+        const outroHeight = outroScrollList.scrollHeight;
+
+        const birtHeight = birtList.scrollHeight;
+        const birtsHeight = birtsList.scrollHeight;
+
+        // Names scroll until 123s
+        const p_names = (t - 30) / 93;
+
+        const y_birt =
+          -p_names * (birtHeight + 250);
+
+        const y_birts =
+          -p_names * (birtsHeight + 250);
+
+        birtList.style.transform =
+          `translateY(${y_birt}px)`;
+
+        birtsList.style.transform =
+          `translateY(${y_birts}px)`;
+
+        // Headers leave with final names
+        if (t < 115) {
+
+          creditsColHeaders.style.transform =
+            `translateX(-50%) translateY(50px)`;
+
+        } else {
+
+          const p_header = (t - 115) / 8;
+
+          const headerY =
+            50 - p_header * 300;
+
+          creditsColHeaders.style.transform =
+            `translateX(-50%) translateY(${headerY}px)`;
+        }
+
+        // OUTRO STARTS AT 115s
+        // OUTRO STARTS AT 115s
+        if (t < 115) {
+
+          outroScrollList.style.transform =
+            `translateY(${window.innerHeight}px)`;
+
+        } else {
+
+          const p_outro =
+            Math.min((t - 115) / (148 - 115), 1);
+
+          const startY = window.innerHeight;
+          const endY = (V - outroHeight) / 2;
+
+          const y =
+            startY + (endY - startY) * p_outro;
+
+          lastOutroY = y;
+
+          outroScrollList.style.transform =
+            `translateY(${y}px)`;
+        }
+      }
+
+      // =========================
+      // OUTRO HOLD (148s - 152s)
+      // =========================
+      else if (t >= 148 && t < 150) {
+
+        const birtHeight = birtList.scrollHeight;
+        const birtsHeight = birtsList.scrollHeight;
+
+        birtList.style.transform =
+          `translateY(${-birtHeight - 500}px)`;
+
+        birtsList.style.transform =
+          `translateY(${-birtsHeight - 500}px)`;
+
+        creditsColHeaders.style.transform =
+          `translateX(-50%) translateY(-300px)`;
+
+        outroScrollList.style.transform =
+          `translateY(${lastOutroY}px)`;
+      }
+
+      // =========================
+      // REDIRECT (152s+)
+      // =========================
+      else {
+
+        isRedirectionTriggered = true;
+        window.location.href = "../index.html#legacy";
+        return;
+      }
+      requestAnimationFrame(updateTimeline);
+
+    }
+
+    // Toggle Play/Pause on screen click
+    //document.body.addEventListener('click', (e) => {
+    //if (e.target.id === 'audioBtn') return;
+    //togglePlayPause();
+    //});
+
+    function togglePlayPause() {
+      if (bgVideo.paused) {
+        bgVideo.play().catch(e => console.log("Video play blocked", e));
+
+      } else {
+        bgVideo.pause();
+      }
+    }
+
+    // Start Timeline loop on video load
+    window.addEventListener('load', () => {
+
+      bgVideo.muted = true;
+
+      bgVideo.play()
+        .then(() => {
+          console.log("Video autoplay started");
+        })
+        .catch(e => {
+          console.log("Video autoplay blocked", e);
+        });
+
+      aBtn.textContent = '♪';
+      aBtn.classList.remove('playing');
+
+      updateTimeline();
+    });
+
+
+    aBtn.addEventListener('click', () => {
+
+      soundEnabled = !soundEnabled;
+
+      bgVideo.muted = !soundEnabled;
+
+      if (soundEnabled) {
+        aBtn.textContent = '♫';
+        aBtn.classList.add('playing');
+      } else {
+        aBtn.textContent = '♪';
+        aBtn.classList.remove('playing');
+      }
+    });
+
+    window.addEventListener('load', () => {
+
+      document.querySelectorAll('audio').forEach(audio => {
+        if (audio.id !== 'bgVideo') {
+          audio.pause();
+        }
+      });
+
+    });
+
+
+
+  </script>
+</body>
+
+</html>
